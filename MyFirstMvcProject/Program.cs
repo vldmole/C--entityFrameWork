@@ -5,18 +5,19 @@ using schedule.server.services.crud;
 
 
 var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddScoped<ContactCrudService,ContactCrudService>();
-builder.Services.AddScoped<ScheduleFacade, ScheduleFacade>();
 ConfigureServices(builder.Services);
 
 var app = builder.Build();
-Configure(app, builder.Environment);
+ConfigureApp(app, builder.Environment);
 app.Run();
 
 static void ConfigureServices(IServiceCollection services)
 {
     services.AddDbContext<ScheduleContext>();
+    
+    services.AddScoped<ContactCrudService,ContactCrudService>();
+    services.AddScoped<ScheduleFacade, ScheduleFacade>();
+    
     services.AddControllersWithViews();
     services.AddControllers();
 
@@ -31,7 +32,7 @@ static void ConfigureServices(IServiceCollection services)
     });
 }
 
-static void Configure(WebApplication app, IWebHostEnvironment env)
+static void ConfigureApp(WebApplication app, IWebHostEnvironment env)
 {
     if (env.IsDevelopment())
     {

@@ -14,7 +14,20 @@ namespace schedule.server.facade
             return _contactCrudService.Create(FromDto(dto));
         }
 
-        private static Contact FromDto(ContactDto dto)
+        public ContactDto FindById(int id)
+        {
+            return FromEntity(_contactCrudService.FindById(id));
+        }
+
+        private ContactDto FromEntity(Contact contact)
+        {
+            return new ContactDto(
+                contact.Name,
+                contact.Phone,
+                contact.Email
+            );
+        }
+        private Contact FromDto(ContactDto dto)
         {
             return new Contact()
             {

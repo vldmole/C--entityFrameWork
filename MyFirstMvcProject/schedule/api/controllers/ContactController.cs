@@ -15,5 +15,18 @@ namespace schedule.api.controllers
         {
             return Ok(_scheduleFacade.CreateContact(dto));
         }
+
+        [HttpGet("{id}")]
+        public IActionResult FindById(int id)
+        { 
+            try{
+                return Ok(_scheduleFacade.FindById(id));
+            }
+            catch(Exception)
+            {
+                return NotFound($"id: {id}");
+            }
+            
+        } 
     }
 }

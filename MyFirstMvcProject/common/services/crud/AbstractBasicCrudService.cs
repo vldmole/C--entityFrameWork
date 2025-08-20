@@ -21,6 +21,7 @@ namespace common.services.crud
         {
             var entity = _dbContext.Find<TEntity>(id) ?? throw new Exception($"Entity not found id:{id}");
             _dbContext.Remove(entity);
+            _dbContext.SaveChanges();
         }
 
         public TEntity FindById(int id)
@@ -50,7 +51,10 @@ namespace common.services.crud
 
         public TEntity Update(TEntity entity)
         {
-            return _dbContext.Update(entity).Entity;
+            var updated =  _dbContext.Update(entity).Entity;
+            _dbContext.SaveChanges();
+            
+            return updated;
         }
     }
 }
