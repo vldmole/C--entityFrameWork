@@ -1,12 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using MyFirstMvcProject.entities;
+using schedule.server.entity;
 
-namespace MyFirstMvcProject.context
+namespace schedule.server.context
 {
     public class ScheduleContext(IConfiguration configuration) : DbContext
     {

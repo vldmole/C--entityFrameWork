@@ -1,4 +1,4 @@
-namespace MyFirstMvcProject.entities
+namespace schedule.server.entity
 {
     public class Contact
     {
